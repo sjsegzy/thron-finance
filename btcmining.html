@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="icon" href="T-removebg-preview.png" type="image/x-icon">
+
+    <title>Bitcoin Mining Bot</title>
+    <style>
+      /* Define the styles for the mining bot container */
+      .mining-bot-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Define the styles for the mining chart */
+      .mining-chart {
+        width: 100%;
+        height: 200px;
+        background-color: #000;
+        border: 1px solid #555;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mining-line {
+        width: 100%;
+        height: 1px;
+        background-color: #555;
+        position: absolute;
+        bottom: 50%;
+      }
+
+      .mining-data {
+        position: absolute;
+        bottom: 0;
+        width: 1px;
+        background-color: #ff9900;
+        transition: height 0.5s ease-in-out;
+      }
+
+      /* Define the styles for the profit counter */
+      .profit-counter {
+        font-size: 24px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* Define the styles for the purchase button */
+      .purchase-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #9b0ad4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .purchase-button:hover {
+        background-color: #f77e00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mining-bot-container">
+      <h1>Bitcoin Mining Bot</h1>
+
+      <div class="mining-chart">
+        <div class="mining-line"></div>
+        <!-- Data points representing mining activity -->
+        <!-- Add more data points as needed -->
+        <!-- The yellow graph lines will be plentiful -->
+        <div class="mining-data" style="height: 10%; left: 1%;"></div>
+        <div class="mining-data" style="height: 20%; left: 2%;"></div>
+        <div class="mining-data" style="height: 30%; left: 3%;"></div>
+        <div class="mining-data" style="height: 40%; left: 4%;"></div>
+        <div class="mining-data" style="height: 50%; left: 5%;"></div>
+        <div class="mining-data" style="height: 60%; left: 6%;"></div>
+        <div class="mining-data" style="height: 70%; left: 7%;"></div>
+        <div class="mining-data" style="height: 80%; left: 8%;"></div>
+        <div class="mining-data" style="height: 90%; left: 9%;"></div>
+        <div class="mining-data" style="height: 100%; left: 10%;"></div>
+        <div class="mining-data" style="height: 10%; left: 11%;"></div>
+        <div class="mining-data" style="height: 20%; left: 12%;"></div>
+        <div class="mining-data" style="height: 30%; left: 13%;"></div>
+        <div class="mining-data" style="height: 40%; left: 14%;"></div>
+        <div class="mining-data" style="height: 50%; left: 15%;"></div>
+        <div class="mining-data" style="height: 60%; left: 16%;"></div>
+        <div class="mining-data" style="height: 70%; left: 17%;"></div>
+        <div class="mining-data" style="height: 80%; left: 18%;"></div>
+        <div class="mining-data" style="height: 90%; left: 19%;"></div>
+        <div class="mining-data" style="height: 100%; left: 20%;"></div>
+        <div class="mining-data" style="height: 10%; left: 21%;"></div>
+        <div class="mining-data" style="height: 20%; left: 22%;"></div>
+        <div class="mining-data" style="height: 30%; left: 23%;"></div>
+        <div class="mining-data" style="height: 40%; left: 24%;"></div>
+        <div class="mining-data" style="height: 50%; left: 25%;"></div>
+        <div class="mining-data" style="height: 60%; left: 26%;"></div>
+        <div class="mining-data" style="height: 70%; left: 27%;"></div>
+        <div class="mining-data" style="height: 80%; left: 28%;"></div>
+        <div class="mining-data" style="height: 90%; left: 29%;"></div>
+        <div class="mining-data" style="height: 100%; left: 30%;"></div>
+        <div class="mining-data" style="height: 10%; left: 31%;"></div>
+        <div class="mining-data" style="height: 20%; left: 32%;"></div>
+        <div class="mining-data" style="height: 30%; left: 33%;"></div>
+        <div class="mining-data" style="height: 40%; left: 34%;"></div>
+        <div class="mining-data" style="height: 50%; left: 35%;"></div>
+        <div class="mining-data" style="height: 60%; left: 36%;"></div>
+        <div class="mining-data" style="height: 70%; left: 37%;"></div>
+        <div class="mining-data" style="height: 80%; left: 38%;"></div>
+        <div class="mining-data" style="height: 90%; left: 39%;"></div>
+        <div class="mining-data" style="height: 100%; left: 40%;"></div>
+        <div class="mining-data" style="height: 10%; left: 41%;"></div>
+        <div class="mining-data" style="height: 20%; left: 42%;"></div>
+        <div class="mining-data" style="height: 30%; left: 43%;"></div>
+        <div class="mining-data" style="height: 40%; left: 44%;"></div>
+        <div class="mining-data" style="height: 50%; left: 45%;"></div>
+        <div class="mining-data" style="height: 60%; left: 46%;"></div>
+        <div class="mining-data" style="height: 70%; left: 47%;"></div>
+        <div class="mining-data" style="height: 80%; left: 48%;"></div>
+        <div class="mining-data" style="height: 90%; left: 49%;"></div>
+        <div class="mining-data" style="height: 100%; left: 50%;"></div>
+        <div class="mining-data" style="height: 10%; left: 51%;"></div>
+        <div class="mining-data" style="height: 20%; left: 52%;"></div>
+        <div class="mining-data" style="height: 30%; left: 53%;"></div>
+        <div class="mining-data" style="height: 40%; left: 54%;"></div>
+        <div class="mining-data" style="height: 50%; left: 55%;"></div>
+        <div class="mining-data" style="height: 60%; left: 56%;"></div>
+        <div class="mining-data" style="height: 70%; left: 57%;"></div>
+        <div class="mining-data" style="height: 80%; left: 58%;"></div>
+        <div class="mining-data" style="height: 90%; left: 59%;"></div>
+        <div class="mining-data" style="height: 100%; left: 50%;"></div>
+        <div class="mining-data" style="height: 10%; left: 61%;"></div>
+        <div class="mining-data" style="height: 20%; left: 62%;"></div>
+        <div class="mining-data" style="height: 30%; left: 63%;"></div>
+        <div class="mining-data" style="height: 40%; left: 64%;"></div>
+        <div class="mining-data" style="height: 50%; left: 65%;"></div>
+        <div class="mining-data" style="height: 60%; left: 66%;"></div>
+        <div class="mining-data" style="height: 70%; left: 67%;"></div>
+        <div class="mining-data" style="height: 80%; left: 68%;"></div>
+        <div class="mining-data" style="height: 90%; left: 69%;"></div>
+        <div class="mining-data" style="height: 100%; left: 70%;"></div>
+        <div class="mining-data" style="height: 10%; left: 71%;"></div>
+        <div class="mining-data" style="height: 20%; left: 72%;"></div>
+        <div class="mining-data" style="height: 30%; left: 73%;"></div>
+        <div class="mining-data" style="height: 40%; left: 74%;"></div>
+        <div class="mining-data" style="height: 50%; left: 75%;"></div>
+        <div class="mining-data" style="height: 60%; left: 76%;"></div>
+        <div class="mining-data" style="height: 70%; left: 77%;"></div>
+        <div class="mining-data" style="height: 80%; left: 78%;"></div>
+        <div class="mining-data" style="height: 90%; left: 79%;"></div>
+        <div class="mining-data" style="height: 100%; left: 80%;"></div>
+        <div class="mining-data" style="height: 10%; left: 81%;"></div>
+        <div class="mining-data" style="height: 20%; left: 81%;"></div>
+        <div class="mining-data" style="height: 30%; left: 83%;"></div>
+        <div class="mining-data" style="height: 40%; left: 84%;"></div>
+        <div class="mining-data" style="height: 50%; left: 85%;"></div>
+        <div class="mining-data" style="height: 60%; left: 86%;"></div>
+        <div class="mining-data" style="height: 70%; left: 87%;"></div>
+        <div class="mining-data" style="height: 80%; left: 88%;"></div>
+        <div class="mining-data" style="height: 90%; left: 89%;"></div>
+        <div class="mining-data" style="height: 100%; left: 90%;"></div>
+        <div class="mining-data" style="height: 10%; left: 91%;"></div>
+        <div class="mining-data" style="height: 20%; left: 92%;"></div>
+        <div class="mining-data" style="height: 30%; left: 93%;"></div>
+        <div class="mining-data" style="height: 40%; left: 94%;"></div>
+        <div class="mining-data" style="height: 50%; left: 95%;"></div>
+        <div class="mining-data" style="height: 60%; left: 96%;"></div>
+        <div class="mining-data" style="height: 70%; left: 97%;"></div>
+        <div class="mining-data" style="height: 80%; left: 98%;"></div>
+        <div class="mining-data" style="height: 90%; left: 99%;"></div>
+        <div class="mining-data" style="height: 100%; left: 100%;"></div>
+      </div>
+
+      <p class="profit-counter" id="profitCounter">$0</p>
+
+      <p>Mining in progress...</p>
+
+      <a href="purchaseminer.html" class="purchase-button" id="purchaseButton"
+        >Subscribe Miner</a
+      >
+    </div>
+
+    <script>
+      // JavaScript code to animate the mining chart
+      function animateMiningChart() {
+        const dataPoints = document.querySelectorAll('.mining-data');
+        dataPoints.forEach((dataPoint) => {
+          const randomHeight = Math.floor(Math.random() * 100) + 1;
+          dataPoint.style.height = randomHeight + '%';
+        });
+      }
+
+      // Call the animation function every second (adjust as needed)
+      setInterval(animateMiningChart, 1000);
+
+      // JavaScript code for profit counter
+      const profitCounter = document.getElementById('profitCounter');
+      let profit = 0;
+
+      setInterval(() => {
+        profit += 10;
+        profitCounter.textContent = '$' + profit;
+      }, 60000); // Increment every minute (60000 milliseconds)
+
+      // JavaScript code for purchase button
+      const purchaseButton = document.getElementById('purchaseButton');
+
+      purchaseButton.addEventListener('click', () => {
+        const btcWalletAddress = 'bc1qjxh2ky7vmq9kzhdyqyvpxaq98kfpnp0tegxz4z';
+        navigator.clipboard
+          .writeText(btcWalletAddress)
+          .then(() => {
+            alert('BTC wallet address copied: ' + btcWalletAddress);
+          })
+          .catch((error) => {
+            console.error('Failed to copy BTC wallet address:', error);
+          });
+      });
+    </script>
+  </body>
+</html>

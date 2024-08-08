@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>THRON-FI: Staking Process</title>
+		<link rel="icon" href="T-removebg-preview.png" type="image/x-icon">
+  <title>Ethereum Staking Landing Page</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 30px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .progress-bar .progress {
+      width: 0%;
+      height: 100%;
+      background-color: #4CAF50;
+      border-radius: 5px;
+      transition: width 1s ease-in-out;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .chart-line {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+    }
+
+    .chart-line .line {
+      fill: none;
+      stroke-width: 2;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ethereum NFT Staking</h1>
+
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <h2>Staking Bot Owner: <span id="ownerName">Kirito Niji</span></h2>
+
+    <div class="chart-container">
+      <svg class="chart-line" id="chart">
+        <path class="line" id="line1"></path>
+        <path class="line" id="line2"></path>
+        <path class="line" id="line3"></path>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    // Simulating the pulsating effect of the progress bar
+    function simulateProgress() {
+      var progressBar = document.getElementById("progress");
+      var width = 0;
+      var increasing = true;
+
+      setInterval(frame, 10);
+
+      function frame() {
+        progressBar.style.width = width + "%";
+
+        if (increasing) {
+          width++;
+          if (width >= 100) {
+            increasing = false;
+          }
+        } else {
+          width--;
+          if (width <= 0) {
+            increasing = true;
+          }
+        }
+      }
+    }
+
+    // Automatically start the progress bar loading and line chart animation on page load
+    window.onload = function() {
+      simulateProgress();
+      animateLineChart();
+    };
+
+    // Simulating the movement of the line chart
+    function animateLineChart() {
+      var lines = document.querySelectorAll(".line");
+      var chartWidth = document.getElementById("chart").clientWidth;
+      var chartHeight = document.getElementById("chart").clientHeight;
+
+      setInterval(moveLines, 3000);
+
+      function moveLines() {
+        lines.forEach(function(line) {
+          var points = generateRandomPoints(chartWidth, chartHeight);
+          var path = createPath(points);
+          line.setAttribute("d", path);
+        });
+      }
+
+      function generateRandomPoints(width, height) {
+        var numPoints = Math.floor(Math.random() * 10) + 5;
+        var points = [];
+
+        for (var i = 0; i < numPoints; i++) {
+          var x = (width / numPoints) * i;
+          var y = Math.floor(Math.random() * height);
+          points.push({ x: x, y: y });
+        }
+
+        return points;
+      }
+
+      function createPath(points) {
+        var path = "M" + points[0].x + "," + points[0].y;
+
+        for (var i = 1; i < points.length; i++) {
+          path += " L" + points[i].x + "," + points[i].y;
+        }
+
+        return path;
+      }
+    }
+  </script>
+</body>
+</html>

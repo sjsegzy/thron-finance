@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>THRON-FI: NFT sales Page</title>
+    <style>
+        /* Page background */
+        body {
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://airnfts.s3.amazonaws.com/nft-images/Ethereum_Essence_1618982273157.gif);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        /* Main content */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Gallery container */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            animation: zoomOut 1s;
+        }
+
+        /* NFT item */
+        .nft-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            background-color: #000;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .nft-item:hover {
+            transform: scale(1.05);
+        }
+
+        .nft-item img {
+            max-width: 100%;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .nft-item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .nft-item p {
+            font-size: 14px;
+            color: #888888;
+        }
+
+        .nft-item a {
+            margin-top: auto;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Zooming out animation */
+        @keyframes zoomOut {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Likes section */
+        .likes-section {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .like-button {
+            display: inline-block;
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .like-button .love-icon {
+            font-size: 24px;
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .like-button .love-icon.red {
+            color: red;
+        }
+
+        .likes-count {
+            margin-left: 5px;
+            font-size: 14px;
+            color: #888888;
+        }
+
+        /* Scroll down button */
+        .scroll-down {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .scroll-down .arrow-icon {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .scroll-down .text {
+            font-size: 14px;
+            color: #888888;
+        }
+
+        /* Back button */
+        .back-button, a[href="nftstaking.html"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: purple;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+a[href="nftstaking.html"] {
+    position: absolute;
+    top: 20px;
+    left: 160px;
+}
+        /* Footer */
+        footer {
+            background-color: #0f0f1a;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .like-button {
+    display: inline-block;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff; /* Set initial color to white */
+}
+
+.like-button.red .love-icon {
+    color: red;
+}
+
+.eye-icon {
+    font-size: 18px;
+    color: #fff;
+}
+
+.views-count {
+    font-size: 14px;
+    color: #888888;
+    margin-left: 5px;
+}
+
+.views-container {
+    margin-left: 5px; /* Adjust the value as needed */
+}
+
+
+    </style>
+    <script>
+        function toggleLike(button) {
+            button.classList.toggle("red");
+            var likesCountElement = button.nextElementSibling;
+            var likesCount = parseInt(likesCountElement.textContent);
+            if (button.classList.contains("red")) {
+                likesCount++;
+            } else {
+                likesCount--;
+            }
+            likesCountElement.textContent = likesCount + " Likes";
+        }
+    </script>
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <header>
+        <h5>Contact our verified manager so you can be add here, Get your NFT sold here</h5>
+
+    </header>
+
+    <div class="content-container">
+        <div class="scrollable-section">
+            <div class="gallery-container">
+                <!-- NFT Item 1 -->
+              <!-- NFT Item 1 -->
+              <div class="nft-item">
+                <img src="https://i.seadn.io/gcs/files/e80e7af34b61f1472c4d8bc194163d86.png?auto=format&dpr=1&w=1000" alt="NFT Image 1">
+                <h3>Azuki #9317</h3>
+                <p></p>
+                <a href="https://opensea.io/assets/ethereum/0xed5af388653567af2f388e6224dc7c4b3241c544/9317/" target="_blank">View on OpenSea</a>
+                <div class="likes-section">
+                    <div class="like-container">
+                        <button class="like-button" onclick="toggleLike(this)">
+                            <span class="love-icon">&#10084;</span>
+                        </button>
+                        <span class="likes-count">7000+ likes</span>
+                    </div>
+                    <div class="views-container"> <!-- New container for views -->
+                        <span class="eye-icon">&#128065;</span><span class="views-count">150k+ views</span>
+                    </div>
+                </div>
+            </div>
+            
+                
+                <!-- NFT Item 2 -->
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/bb34b74ab0261812389c805eb66cd773.png?auto=format&dpr=1&w=1000" alt="NFT Image 2">
+                    <h3>MAYC #7315</h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0x60e4d786628fea6478f785a6d7e704777c86a7c6/7315/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">5000+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">150k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more NFT items as needed -->
+                <!-- NFT Item 3 -->
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/451747d62c0591c2271d1de97a24e080.png?auto=format&dpr=1&w=1000" alt="NFT Image 3">
+                    <h3>Nakamigos #8511</h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0xbd3531da5cf5857e7cfaa92426877b022e612cf8/2664/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">3500+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- NFT Item 4 -->
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/4f99f9b966447e791ce917fbaab3fe6a.png?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>BAKC #6492
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0xba30e5f9bb24caa003e9f2f0497ad287fdf95623/6492/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count"> 1000+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gae/tKtEr9H7DoEDJwc5ioPFFJVBZGehlueWJjXIn9dDc6t6dGMtaxEqNeDt6zdh6EH1sNiQrV5B1zgb6m8Nxkxrjd1y5-t7JkbM9NGrVA?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>BAYC #2903
+
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/2903/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">1000+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="nft-item">
+                    <img src="https://openseauserdata.com/files/36eccd802b6d5c4def149a7645547911.svg" alt="NFT Image 4">
+                    <h3>Noun 583
+
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0x9c8ff314c9bc7f6e59a9d9225fb22946427edc03/583/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">2000+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gae/WKoW6Vw_OH9KbzuxB0P--XivCYYlgSbHbFus2dorbnujwOMRpJuu4N6NEBo4sPq8l3LttrriUrgNJLVte8_HENGfUKbDJJquStxbQTM?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>Drip Squad #39295
+
+
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/matic/0xbfd670667053e517a97afe56c91e4f83f1160bd3/39294/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">2500+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/5840e7993bccd4a1d3d03596c15a8bb2.png?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>Pudgy Penguin #2664
+
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/matic/0xbfd670667053e517a97afe56c91e4f83f1160bd3/39294/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">2700+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nft-item">
+                    <img src="https://openseauserdata.com/files/079b152892912bf517252b0e523bbb49.bin" alt="NFT Image 4">
+                    <h3>Moonbirds #2871
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0x23581767a106ae21c074b2276d25e5c3e136a68b/2871/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">2000+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/15129175f579917047ec97fd8663dc6e.png?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>Mint Pass #384
+
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0xc73b17179bf0c59cd5860bb25247d1d1092c1088/384/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">4800+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gae/nr2PQytCsAti--2u3lWkznJAo1QqUP3wpGkadICKeH4Gly8LKBttsnndmRdywsS_jNlKoRAZ9bMi7-aIv_UKOB3O02lSITJf0LclrKg?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>CryptoPunk #1018</h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb/1018/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">4800+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nft-item">
+                    <img src="https://i.seadn.io/gcs/files/3ab8ccb451d6307846b026c6d91e434b.jpg?auto=format&dpr=1&w=1000" alt="NFT Image 4">
+                    <h3>THE HERO #710
+                    </h3>
+                    <p></p>
+                    <a href="https://opensea.io/assets/ethereum/0x44d39e215c112c5aec6a733d691b464aa62b3f85/710/" target="_blank">View on OpenSea</a>
+                    <div class="likes-section">
+                        <div class="like-container">
+                            <button class="like-button" onclick="toggleLike(this)">
+                                <span class="love-icon">&#10084;</span>
+                            </button>
+                            <span class="likes-count">4800+ likes</span>
+                        </div>
+                        <div class="views-container"> <!-- New container for views -->
+                            <span class="eye-icon">&#128065;</span><span class="views-count">100k+ views</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="scroll-down">
+            <span class="arrow-icon">&#8595;</span>
+        </div>
+
+        <a href="dashboard.html" class="back-button">Back</a>
+        <a href="nftstaking.html" class="back-button">stake NFT</a>
+
+    </div>
+
+</body>
+</html>
